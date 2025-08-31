@@ -6,12 +6,14 @@ import { IonicModule } from '@ionic/angular';
 import { SelectComponentComponent } from './component/select-component/select-component.component';
 import { InputComponentComponent } from './component/input-component/input-component.component';
 import { UserFormComponentComponent } from './component/user-form-component/user-form-component.component';
+import { LinkComponentComponent } from './component/link-component/link-component.component';
 
 const MODULES = [CommonModule, FormsModule, IonicModule , ReactiveFormsModule];
 const COMPONENTS = [
   SelectComponentComponent,
   InputComponentComponent,
-  UserFormComponentComponent
+  UserFormComponentComponent,
+  LinkComponentComponent
 ];
 
 @NgModule({

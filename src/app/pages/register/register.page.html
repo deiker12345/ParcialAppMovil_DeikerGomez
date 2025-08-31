@@ -6,4 +6,10 @@
 
 <ion-content class="ion-padding">
   <app-user-form-component (ngSubmitForm)="register($event)"></app-user-form-component>
+
+  <app-link-component
+    text="¿Ya tienes cuenta?"
+    linkText="Inicia sesión"
+    linkTo="/login">
+  </app-link-component>
 </ion-content>
