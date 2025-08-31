@@ -1,0 +1,35 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input formControlName="name" placeholder="Tu nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Apellido</ion-label>
+    <ion-input formControlName="lastName" placeholder="Tu apellido"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Correo</ion-label>
+    <ion-input type="email" formControlName="email" placeholder="ejemplo@mail.com"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Contraseña</ion-label>
+    <ion-input type="password" formControlName="password" placeholder="******"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>País</ion-label>
+    <ion-select formControlName="country" placeholder="Selecciona un país">
+      <ion-select-option *ngFor="let country of countries" [value]="country.id">
+        {{ country.value }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="block" type="submit" [disabled]="registerForm.invalid">
+    Registrarme
+  </ion-button>
+</form>
