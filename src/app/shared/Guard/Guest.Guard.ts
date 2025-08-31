@@ -5,16 +5,16 @@ import { AuthService } from '../service/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class GuestGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(): boolean {
     const user = this.authService.getUser();
     if (user) {
-      return true;
+      this.router.navigate(['/home']);
+      return false;
     }
-    this.router.navigate(['/login']);
-    return false; 
+    return true;
   }
 }
 
