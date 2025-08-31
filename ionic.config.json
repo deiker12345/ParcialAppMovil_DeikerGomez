@@ -1,0 +1,7 @@
+{
+  "name": "TV-station",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
