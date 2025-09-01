@@ -1,0 +1,20 @@
+<ion-modal [isOpen]="isOpen" (ionModalDidDismiss)="onClose.emit()">
+  <ng-container *ngIf="article">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>{{ article.title }}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="onClose.emit()">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <img *ngIf="article.urlToImage" [src]="article.urlToImage" style="width: 100%;" />
+      <p>{{ article.content }}</p>
+      <ion-button expand="block" color="primary" (click)="openInBrowser(article.url)">
+        Leer en el navegador
+      </ion-button>
+    </ion-content>
+  </ng-container>
+</ion-modal>

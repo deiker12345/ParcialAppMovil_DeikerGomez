@@ -1,0 +1,20 @@
+<ion-card *ngIf="article" (click)="onSelect.emit(article)" class="news-card">
+  <div class="thumb">
+    <img *ngIf="article.urlToImage; else noImg" [src]="article.urlToImage" (error)="onImgError($event)" />
+    <ng-template #noImg>
+      <div class="placeholder">No image</div>
+    </ng-template>
+  </div>
+
+  <ion-card-header>
+    <ion-card-subtitle>{{ article.source?.name }}</ion-card-subtitle>
+    <ion-card-title>{{ article.title }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <p>{{ article.description || article.content || 'Sin descripción' }}</p>
+    <div class="meta">
+      <small>{{ article.author || 'Autor' }} • {{ article.publishedAt | date:'medium' }}</small>
+    </div>
+  </ion-card-content>
+</ion-card>

@@ -1,3 +1,13 @@
-<p>
-  header works!
-</p>
+<header class="header">
+
+  <button class="menu-btn" (click)="onToggleSidebar()">
+    ☰
+  </button>
+
+  <h1 class="title">📰 MyNews</h1>
+
+  <div class="user-info">
+    <span>{{ userName }}</span>
+    <button class="logout-btn" (click)="logout()">Salir</button>
+  </div>
+</header>

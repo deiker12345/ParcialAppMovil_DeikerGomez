@@ -1,0 +1,13 @@
+.sidebar {
+  border-right: 1px solid #ccc;
+  min-height: 100vh;
+  background: #f9f9f9;
+}
+
+.content {
+  padding: 16px;
+}
+
+ion-item {
+  --background: transparent;
+}
