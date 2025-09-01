@@ -1,6 +1,10 @@
 <header class="app-header">
-  <h1>Noticias</h1>
-  <div class="profile-icon" (click)="onToggleSidebar()">
-    <i class="fas fa-user-circle"></i>
+  <h1 class="title">Noticias</h1>
+
+  <div class="right" (click)="onToggleSidebar()">
+    <span class="user-name">{{ userName }}</span>
+    <div class="profile-icon">
+      <i class="fas fa-user-circle"></i>
+    </div>
   </div>
 </header>

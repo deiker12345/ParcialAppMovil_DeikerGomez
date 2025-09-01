@@ -1,27 +1,34 @@
 <app-header (toggleSidebar)="toggleSidebar()"></app-header>
 <app-sidebar [open]="sidebarOpen"></app-sidebar>
 
-<div class="content-scroll">
+<div class="content-scroll" *ngIf="!selectedArticle" #scrollContainer (scroll)="onScroll($event)">
   <app-principal-news [article]="articles[0]"></app-principal-news>
 
   <div class="news-list">
-    <div 
-      class="news-card" 
-      *ngFor="let article of articles.slice(1)" 
-      (click)="openArticle(article)"
-    >
+    <div class="news-card" *ngFor="let article of articles.slice(1)" (click)="openArticle(article)">
       <img [src]="article.urlToImage || 'assets/placeholder.jpg'" />
       <h3>{{ article.title }}</h3>
       <p>{{ article.publishedAt | date:'short' }}</p>
     </div>
   </div>
+
+  <div class="loading" *ngIf="loading">
+    Cargando más noticias...
+  </div>
 </div>
+
 
 <div class="article-detail" *ngIf="selectedArticle">
   <button class="close-btn" (click)="closeDetail()">✖</button>
+
   <h2>{{ selectedArticle.title }}</h2>
   <p>{{ selectedArticle.publishedAt | date:'medium' }}</p>
+
   <img [src]="selectedArticle.urlToImage || 'assets/placeholder.jpg'" />
   <p>{{ selectedArticle.content }}</p>
+
   <button class="read-more">Leer más</button>
+
+
+  <button class="back-btn" (click)="closeDetail()">⬅ Volver a Home</button>
 </div>

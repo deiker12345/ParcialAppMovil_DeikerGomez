@@ -1,7 +1,8 @@
-<div class="sidebar" [@toggleSidebar]="open ? 'open' : 'closed'">
-  <ul *ngIf="open">
+<nav class="sidebar" [class.open]="open">
+  <ul>
+    <li>Inicio</li>
     <li>Perfil</li>
     <li>Configuración</li>
     <li>Cerrar sesión</li>
   </ul>
-</div>
+</nav>
