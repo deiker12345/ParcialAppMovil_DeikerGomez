@@ -1,14 +1,28 @@
 .sidebar {
-  width: 250px;
   background: #fff;
   border-right: 1px solid #ddd;
   height: 100vh;
-  position: fixed;
-  top: 0;
-  left: -250px;
-  transition: left 0.3s ease;
+  overflow: hidden;
+  padding: 20px 0;
 
-  &.open {
-    left: 0;
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #f0f0f0;
+      }
+    }
+
+    .active {
+      font-weight: bold;
+      border-left: 4px solid #007bff;
+      background: #f9f9f9;
+    }
   }
 }

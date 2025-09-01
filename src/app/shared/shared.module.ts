@@ -11,7 +11,6 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { CardComponent } from './component/card/card.component';
 import { ModalComponent } from './component/modal/modal.component';
 import { HeaderComponent } from './component/header/header.component';
-import { ProfileComponent } from './component/profile/profile.component';
 import { PrincipalNewsComponentComponent } from './component/principal-news-component/principal-news-component.component';
 
 
@@ -25,7 +24,6 @@ const COMPONENTS = [
   CardComponent,
   ModalComponent,
   HeaderComponent,
-  ProfileComponent,
   PrincipalNewsComponentComponent
 ];
 

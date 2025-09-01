@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
 
   sidebarOpen = false;
   loading: boolean = false;
-  page: number = 0;
+  page: number = 1;
 
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
 
@@ -34,6 +34,7 @@ export class HomePage implements OnInit {
   loadNews() {
     this.newsService.getTopHeadlines('us').subscribe((res) => {
       this.articles = res.articles;
+      console.log(this.articles);
     });
   }
 
