@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,4 +17,10 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class SidebarComponent {
   @Input() open: boolean = false;
+
+  constructor(private router: Router) {}
+
+  goToProfile() {
+    this.router.navigate(['/profile']);
+  }
 }

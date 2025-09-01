@@ -8,15 +8,17 @@ import { AuthService } from 'src/app/shared/service/auth.service';
   standalone: false
 })
 export class ProfilePage implements OnInit {
-  userName = '';
-  userEmail = '';
+  user: any;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    const user = this.authService.getUser();
-    this.userName = user ? user.name : 'Invitado';
-    this.userEmail = user ? user.email : 'No disponible';
+    this.user = this.authService.getUser();
+  }
+
+  logout() {
+    this.authService.logout();
+    window.location.href = '/login';
   }
 }
 

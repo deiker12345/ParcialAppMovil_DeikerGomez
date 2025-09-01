@@ -1,0 +1,10 @@
+<div class="sidebar" [@toggleSidebar]="open ? 'open' : 'closed'">
+  <ul>
+    <li (click)="goToProfile()">
+      <i class="fas fa-user"></i> Perfil
+    </li>
+    <li>
+      <i class="fas fa-newspaper"></i> Noticias
+    </li>
+  </ul>
+</div>
