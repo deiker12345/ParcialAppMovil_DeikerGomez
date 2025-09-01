@@ -11,11 +11,12 @@ export class NewsService {
   private apiKey = environment.newsApiKey;
   private apiUrl = environment.newsApiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getTopHeadlines(country: string = 'us'): Observable<any> {
+  getTopHeadlines(country: string = 'us', page: number = 1): Observable<any> {
     return this.http.get(
-      `${this.apiUrl}/top-headlines?country=${country}&apiKey=${this.apiKey}`
+      `${this.apiUrl}/top-headlines?country=${country}&page=${page}&pageSize=10&apiKey=${this.apiKey}`
     );
   }
+
 }

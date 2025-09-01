@@ -12,7 +12,9 @@ import { NewsService } from 'src/app/shared/service/news.service';
 export class HomePage implements OnInit {
   user: any;
   articles: any[] = [];
-  selectedTab: string = 'profile';
+  selectedArticle: any = null;
+
+  sidebarOpen = false;
 
   constructor(
     private authService: AuthService,
@@ -21,7 +23,7 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.user = this.authService.getUser(); 
+    this.user = this.authService.getUser();
     this.loadNews();
   }
 
@@ -31,12 +33,20 @@ export class HomePage implements OnInit {
     });
   }
 
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+
+  openArticle(article: any) {
+    this.selectedArticle = article;
+  }
+
+  closeDetail() {
+    this.selectedArticle = null;
+  }
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
-  }
-
-  changeTab(tab: string) {
-    this.selectedTab = tab;
   }
 }

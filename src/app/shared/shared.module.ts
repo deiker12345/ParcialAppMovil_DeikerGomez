@@ -12,6 +12,7 @@ import { CardComponent } from './component/card/card.component';
 import { ModalComponent } from './component/modal/modal.component';
 import { HeaderComponent } from './component/header/header.component';
 import { ProfileComponent } from './component/profile/profile.component';
+import { PrincipalNewsComponentComponent } from './component/principal-news-component/principal-news-component.component';
 
 
 const MODULES = [CommonModule, FormsModule, IonicModule , ReactiveFormsModule];
@@ -25,6 +26,7 @@ const COMPONENTS = [
   ModalComponent,
   HeaderComponent,
   ProfileComponent,
+  PrincipalNewsComponentComponent
 ];
 
 @NgModule({

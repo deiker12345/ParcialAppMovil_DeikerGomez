@@ -1,57 +1,27 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Bienvenido {{ user?.name }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header (toggleSidebar)="toggleSidebar()"></app-header>
+<app-sidebar [open]="sidebarOpen"></app-sidebar>
 
-<ion-content>
-  <ion-grid>
-    <ion-row>
-   
-      <ion-col size="3" class="sidebar">
-        <ion-list>
-          <ion-item button (click)="changeTab('profile')">
-            <ion-icon name="person-circle-outline"></ion-icon>
-            <ion-label>Perfil</ion-label>
-          </ion-item>
-          <ion-item button (click)="changeTab('news')">
-            <ion-icon name="newspaper-outline"></ion-icon>
-            <ion-label>Noticias</ion-label>
-          </ion-item>
-          <ion-item button (click)="logout()">
-            <ion-icon name="log-out-outline"></ion-icon>
-            <ion-label>Salir</ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-col>
+<div class="content-scroll">
+  <app-principal-news [article]="articles[0]"></app-principal-news>
 
+  <div class="news-list">
+    <div 
+      class="news-card" 
+      *ngFor="let article of articles.slice(1)" 
+      (click)="openArticle(article)"
+    >
+      <img [src]="article.urlToImage || 'assets/placeholder.jpg'" />
+      <h3>{{ article.title }}</h3>
+      <p>{{ article.publishedAt | date:'short' }}</p>
+    </div>
+  </div>
+</div>
 
-      <ion-col size="9">
-
-        <div *ngIf="selectedTab === 'profile'" class="content">
-          <h2>Perfil</h2>
-          <p><b>Nombre:</b> {{ user?.name }} {{ user?.lastName }}</p>
-          <p><b>Email:</b> {{ user?.email }}</p>
-          <p><b>País:</b> {{ user?.country }}</p>
-        </div>
-
-
-        <div *ngIf="selectedTab === 'news'" class="content">
-          <h2>Últimas noticias</h2>
-          <ion-list>
-            <ion-item *ngFor="let article of articles">
-              <ion-thumbnail slot="start">
-                <img [src]="article.urlToImage" *ngIf="article.urlToImage">
-              </ion-thumbnail>
-              <ion-label>
-                <h3>{{ article.title }}</h3>
-                <p>{{ article.description }}</p>
-                <a [href]="article.url" target="_blank">Leer más</a>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
+<div class="article-detail" *ngIf="selectedArticle">
+  <button class="close-btn" (click)="closeDetail()">✖</button>
+  <h2>{{ selectedArticle.title }}</h2>
+  <p>{{ selectedArticle.publishedAt | date:'medium' }}</p>
+  <img [src]="selectedArticle.urlToImage || 'assets/placeholder.jpg'" />
+  <p>{{ selectedArticle.content }}</p>
+  <button class="read-more">Leer más</button>
+</div>

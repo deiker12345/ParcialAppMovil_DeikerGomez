@@ -1,23 +1,7 @@
-<div class="sidebar" [@toggleSidebar]="isOpen ? 'open' : 'closed'">
-  <div class="sidebar-header">
-    <div class="user-info" *ngIf="user">
-      <div class="avatar">{{ user.name[0] }}</div>
-      <div>
-        <h3>{{ user.name }}</h3>
-        <p>{{ user.email }}</p>
-      </div>
-    </div>
-  </div>
-  <hr />
-
-  <ul class="sidebar-menu">
-    <li (click)="goToProfile()">👤 Perfil</li>
-    <li *ngFor="let cat of categories" (click)="goToCategory(cat.key)">
-      📰 {{ cat.label }}
-    </li>
+<div class="sidebar" [@toggleSidebar]="open ? 'open' : 'closed'">
+  <ul *ngIf="open">
+    <li>Perfil</li>
+    <li>Configuración</li>
+    <li>Cerrar sesión</li>
   </ul>
-
-  <hr />
-
-  <button class="logout" (click)="logout()">🚪 Cerrar sesión</button>
 </div>

@@ -1,0 +1,13 @@
+<div class="news-container" *ngIf="article">
+  <div class="news-grid">
+    <div class="news-image">
+      <img [src]="article.urlToImage || 'assets/placeholder.jpg'" alt="news" />
+    </div>
+    <div class="news-details">
+      <h2>{{ article.title }}</h2>
+      <p class="date">{{ article.publishedAt | date:'medium' }}</p>
+      <p class="desc">{{ article.description }}</p>
+      <button (click)="openArticle()">Leer más</button>
+    </div>
+  </div>
+</div>
