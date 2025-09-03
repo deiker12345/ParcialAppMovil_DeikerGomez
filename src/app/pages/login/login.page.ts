@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/shared/service/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/service/auth.service';
 import { ToastService } from 'src/app/shared/service/toast.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  standalone: false
+  standalone : false
 })
 export class LoginPage {
+
   credentials = {
     email: '',
     password: ''
@@ -18,19 +19,19 @@ export class LoginPage {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private toast: ToastService
-  ) {}
+    private toastService: ToastService
+  ) { }
 
-  login() {
+  login(): void {
     this.authService.login(this.credentials).subscribe({
-     next: (res) => {
-      this.toast.show('Bienvenido', 'success');
-      this.router.navigate(['/home']);
-    },
-    error: (err) => {
-      this.toast.show('Credenciales incorrectas', 'danger');
-      console.error(err);
-    }
+      next: () => {
+        this.toastService.show('Inicio de sesión exitoso', 'success');
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        this.toastService.show('Error en el inicio de sesión: ' + error.message, 'danger');
+        console.error('Error en el inicio de sesión:', error);
+      }
     });
   }
 }

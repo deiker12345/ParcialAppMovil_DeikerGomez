@@ -1,8 +1,13 @@
 <ion-item>
   <ion-label>{{ label }}</ion-label>
-  <ion-select [formControl]="control">
-    <ion-select-option *ngFor="let opt of options" [value]="opt">
-      {{ opt.value }}
+  <ion-select
+    [formControl]="formControl"
+    [compareWith]="compareWith">
+    <ion-select-option *ngFor="let country of options" [value]="country">
+      {{ country.name }}
     </ion-select-option>
   </ion-select>
 </ion-item>
+<ion-text color="danger" *ngIf="formControl.invalid && formControl.touched">
+  Selecciona un país
+</ion-text>

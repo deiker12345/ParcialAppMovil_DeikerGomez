@@ -1,0 +1,71 @@
+ion-content.login-background {
+    --background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.login-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-logo {
+    margin-bottom: 1.5rem;
+    ion-icon {
+        font-size: 6rem;
+        color: #667eea;
+    }
+}
+
+.input-item {
+    --background: #fff;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 1.2rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    
+    &.item-has-focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+    }
+    
+    ion-icon {
+        padding: 0 10px;
+        color: #667eea;
+    }
+
+    ion-label {
+        color: #555;
+    }
+
+    ion-input {
+        --padding-start: 10px;
+    }
+}
+
+.login-btn {
+    width: 100%;
+    height: 50px;
+    margin-top: 1.5rem;
+    --border-radius: 10px;
+    --box-shadow: 0 5px 15px rgba(102, 126, 234, 0.5);
+    font-size: 1.1em;
+}
+
+.link-text {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}

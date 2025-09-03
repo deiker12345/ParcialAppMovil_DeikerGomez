@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/shared/service/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/service/auth.service';
+import { User } from 'src/app/shared/model/user.interface';
 import { ToastService } from 'src/app/shared/service/toast.service';
 
 @Component({
@@ -10,22 +11,23 @@ import { ToastService } from 'src/app/shared/service/toast.service';
   standalone : false
 })
 export class RegisterPage {
+
   constructor(
     private authService: AuthService,
     private router: Router,
-    private toast: ToastService
-  ) {}
+    private toastService: ToastService
+  ) { }
 
-  register(user: any) {
+  register(user: User): void {
     this.authService.register(user).subscribe({
-     next: (res) => {
-      this.toast.show('Registro exitoso', 'success');
-      this.router.navigate(['/login']);
-    },
-    error: (err) => {
-      this.toast.show('Error al registrar', 'danger');
-      console.error(err);
-    }
+      next: () => {
+        this.toastService.show('Registro exitoso', 'success');
+        this.router.navigate(['/login']);
+      },
+      error: (error) => {
+        this.toastService.show('Error en el registro: ' + error.message, 'danger');
+        console.error('Error en el registro:', error);
+      }
     });
   }
 }

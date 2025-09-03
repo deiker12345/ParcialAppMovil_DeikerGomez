@@ -1,39 +1,63 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Country, User } from '../../model/user.interface';
+import { CountryService } from '../../service/country.service';
 
 @Component({
   selector: 'app-user-form-component',
   templateUrl: './user-form-component.component.html',
   styleUrls: ['./user-form-component.component.scss'],
-  standalone : false
 })
 export class UserFormComponentComponent implements OnInit {
 
-   @Output() ngSubmitForm = new EventEmitter<any>();
+  @Input() user: User | null = null;
+  @Input() isEdit: boolean = false;
+  @Output() ngSubmitForm = new EventEmitter<User>();
 
-  registerForm!: FormGroup;
+  userForm!: FormGroup;
+  countries: Country[] = [];
 
-  countries = [
-    { id: 'CO', value: '🇨🇴 Colombia' },
-    { id: 'MX', value: '🇲🇽 México' },
-    { id: 'AR', value: '🇦🇷 Argentina' }
-  ];
+  customAlertOptions = {
+    header: 'Países',
+    subHeader: 'Selecciona tu país de residencia',
+    translucent: true
+  };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private countryService: CountryService
+  ) {}
 
   ngOnInit() {
-    this.registerForm = this.fb.group({
+    this.userForm = this.fb.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      country: ['', Validators.required],
+      country: [null, Validators.required],
+    });
+
+    if (this.isEdit && this.user) {
+      this.userForm.patchValue(this.user);
+      this.userForm.get('password')?.clearValidators();
+      this.userForm.get('password')?.updateValueAndValidity();
+    }
+
+    this.countryService.getCountries().subscribe({
+      next: (data) => (this.countries = data),
+      error: (err) => console.error('Error loading countries:', err)
     });
   }
 
+  public compareCountries = (c1: Country, c2: Country): boolean => {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
+
   onSubmit() {
-    if (this.registerForm.valid) {
-      this.ngSubmitForm.emit(this.registerForm.value);
+    if (this.userForm.valid) {
+      this.ngSubmitForm.emit(this.userForm.value);
+    } else {
+      this.userForm.markAllAsTouched();
     }
   }
 }

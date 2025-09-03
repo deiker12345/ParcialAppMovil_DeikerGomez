@@ -1,7 +1,13 @@
+export interface Country {
+  id: string;
+ name : string; 
+}
+
 export interface User {
-  name: string;
-  lastName: string;
-  email: string;
-  password: string;
-  country: string;
+ id?: string;
+ name: string;
+ lastName: string;
+ email: string;
+ password: string;
+ country: Country;
 }

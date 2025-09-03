@@ -1,0 +1,35 @@
+.input-item {
+    --background: #fff;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 1.2rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    
+    &.item-has-focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+    }
+    
+    ion-icon {
+        padding: 0 10px;
+        color: #667eea;
+    }
+
+    ion-label {
+        color: #555;
+    }
+
+    ion-input, ion-select {
+        --padding-start: 10px;
+    }
+}
+
+.login-btn {
+    width: 100%;
+    height: 50px;
+    margin-top: 1.5rem;
+    --border-radius: 10px;
+    --box-shadow: 0 5px 15px rgba(102, 126, 234, 0.5);
+    font-size: 1.1em;
+}

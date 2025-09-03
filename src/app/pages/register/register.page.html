@@ -1,15 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Registro</ion-title>
+<ion-header translucent="true">
+  <ion-toolbar color="transparent">
+    <ion-title class="ion-text-center">Registro de Usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <app-user-form-component (ngSubmitForm)="register($event)"></app-user-form-component>
+<ion-content class="ion-padding login-background">
+  <div class="login-wrapper">
+    <div class="login-card">
+      <app-user-form-component (ngSubmitForm)="register($event)"></app-user-form-component>
 
-  <app-link-component
-    text="¿Ya tienes cuenta?"
-    linkText="Inicia sesión"
-    linkTo="/login">
-  </app-link-component>
+      <div class="link-text">
+        <app-link-component text="¿Ya tienes cuenta?" linkText=" Inicia sesión aquí" linkTo="/login">
+        </app-link-component>
+      </div>
+    </div>
+  </div>
 </ion-content>

@@ -1,5 +1,5 @@
-import { Component, Input,} from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input-component',
@@ -12,6 +12,9 @@ export class InputComponentComponent  {
   @Input() label!: string;
   @Input() type: 'text' | 'email' | 'password' = 'text';
   @Input() placeholder: string = '';
-  @Input() control!: FormControl;
+  @Input() control!: AbstractControl | null;
 
+  get formControl(): FormControl {
+    return this.control as FormControl;
+  }
 }

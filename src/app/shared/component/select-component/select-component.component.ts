@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { AbstractControl, FormControl } from '@angular/forms';
+import { Country } from '../../model/user.interface';
 
 @Component({
   selector: 'app-select-component',
@@ -8,8 +9,13 @@ import { FormControl } from '@angular/forms';
   standalone : false
 })
 export class SelectComponentComponent {
+  @Input() label!: string;
+  @Input() options: Country[] = [];
+  @Input() control!: AbstractControl | null;
+  @Input() compareWith: (o1: any, o2: any) => boolean = (o1, o2) => o1 === o2;
 
-   @Input() label!: string;
-   @Input() options: { id: string, value: string }[] = [];
-   @Input() control!: FormControl;
+  get formControl(): FormControl {
+    return this.control as FormControl;
+  }
 }
+

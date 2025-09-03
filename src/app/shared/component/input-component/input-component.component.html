@@ -2,10 +2,10 @@
   <ion-label position="floating">{{ label }}</ion-label>
   <ion-input
     [type]="type"
-    [placeholder]="placeholder"
-    [formControl]="control">
+    [formControl]="formControl"
+    [placeholder]="placeholder">
   </ion-input>
 </ion-item>
-<ion-text color="danger" *ngIf="control.invalid && control.touched">
-  <small>Campo inválido</small>
+<ion-text color="danger" *ngIf="formControl.invalid && formControl.touched">
+  Campo requerido o inválido
 </ion-text>
