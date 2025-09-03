@@ -4,6 +4,7 @@ import { tap } from 'rxjs/operators';
 import { User } from '../model/user.interface';
 import { AuthResponse } from '../model/auth-response.interface';
 import * as CryptoJS from 'crypto-js';
+// @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 import { StorageService } from './storage.service';
 

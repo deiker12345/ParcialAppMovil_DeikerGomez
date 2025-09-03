@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   newsApiKey: '01eeef7a4d6f4f2e973311c367930755',
-  newsApiUrl: 'https://newsapi.org/v2'
+  newsApiUrl: 'https://newsapi.org/v2/everything?q=tesla&sortBy=publishedAt'
 };
 
 

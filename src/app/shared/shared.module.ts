@@ -19,14 +19,14 @@ import { SelectComponentComponent } from './component/select-component/select-co
 const MODULES = [CommonModule, FormsModule, IonicModule , ReactiveFormsModule];
 const COMPONENTS = [
   InputComponentComponent,
-  UserFormComponentComponent,
   LinkComponentComponent,
   SidebarComponent,
   CardComponent,
   ModalComponent,
   HeaderComponent,
   PrincipalNewsComponentComponent,
-  SelectComponentComponent
+  SelectComponentComponent,
+  UserFormComponentComponent
 ];
 
 @NgModule({
